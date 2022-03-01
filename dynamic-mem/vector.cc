@@ -108,6 +108,20 @@ struct vector
             p = tmp;
         }
     }
+
+    /**
+     * Se il vector è vuoto (len==0) non fa nulla.
+     * Altrimenti (len>0) riduce la dimensione del
+     * vector di 1 rimuovendo l'ultimo elemento.
+     *
+     * È necessario ridurre la dimensione dell'array
+     * per ottenere questo risultato? Oppure si può
+     * ottenerlo in maniera più efficiente?
+     */
+    void pop_back()
+    {
+        ;
+    }
 };
 
 /**
@@ -120,19 +134,20 @@ int main(int argc, char const *argv[])
     vector numbers;
     int n;
 
+    cout << "Inserisci un numero n:" << endl;
+    cout << "\tn>0: n viene inserito nel vector" << endl;
+    cout << "\tn<0: l'ultimo elemento viene rimosso dal vector" << endl;
+    cout << "\tn=0: il ciclo termina" << endl;
     while (true)
     {
         cout << "Dammi n: ";
         cin >> n;
-        if (n != 0)
-        {
+        if (n == 0)
+            break; // break serve per uscire dai cicli
+        else if (n > 0)
             numbers.push_back(n);
-        }
         else
-        {
-            // break serve per uscire dai cicli
-            break;
-        }
+            numbers.pop_back();
     }
 
     numbers.stampa();
